@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [work, setwork] = useState('')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <h1 className="flex gap-8 h-screen items-center justify-center border border-red-500">
+      <input 
+      type="text"
+      className="outline-none border border-blue-600 px-4 py-2 w-[400px]"
+      value={work}
+      onChange={e => setwork(e.target.value)}
+      />
+      
+      <button
+      type="button"
+      className="outline-none px-4 py-2 bg-blue-500 rounded-md text-white"
+      >
+        add
+      </button>
+    </h1>
   );
 }
 
