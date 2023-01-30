@@ -1,4 +1,4 @@
-import {Home, Login, Public} from './containers/public/'
+import {Home, Login, Public, Personal} from './containers/public/'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from "react-router-dom";
@@ -18,6 +18,7 @@ const dispatch = useDispatch()
         <Routes>
           <Route path={path.PUBLIC} element={<Public />}>
             <Route path={path.HOME} element={<Home />} />
+            <Route path={path.MY_MUSIC} element={<Personal />} />
 
 
 
