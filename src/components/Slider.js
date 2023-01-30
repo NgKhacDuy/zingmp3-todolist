@@ -19,18 +19,19 @@ const Slider = () => {
           sliderEls[i].style.cssText = 'display: none'
         }
       }
-      if(min ===sliderEls.length - 1){
-        min =0
+      if(min === sliderEls.length - 1){
+        min = 0
       }
       else{
-        min+=1
+        min += 1
       }
-      if(max ===sliderEls.length - 1){
-        max =0
+      if(max === sliderEls.length - 1){
+        max = 0
       }
       else{
-        max +=1
+        max += 1
       }
+      console.log(list)
 
     },1000)
     return()=>{
