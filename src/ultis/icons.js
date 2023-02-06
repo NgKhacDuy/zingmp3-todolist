@@ -5,6 +5,7 @@ import {
   BsThreeDots,
   BsFillPlayFill,
   BsFillPauseFill,
+  BsMusicNoteBeamed,
 } from "react-icons/bs";
 import {
   AiOutlineArrowLeft,
@@ -33,6 +34,7 @@ const icon = {
   CiShuffle,
   BsFillPlayFill,
   BsFillPauseFill,
+  BsMusicNoteBeamed,
 };
 
 export default icon;

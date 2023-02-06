@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as apis from "../../apis";
 import moment from "moment";
+import { Lists, ListSong } from "../../components";
 const Album = () => {
   const { title, pid } = useParams();
   const [playlistData, setPlaylistData] = useState({});
@@ -42,7 +43,16 @@ const Album = () => {
           </span>
         </div>
       </div>
-      <div className="flex-auto border border-blue-500">playlist</div>
+      <div className="flex-auto border border-blue-500 overflow-y-scroll">
+        <span className="text-sm">
+          <span className="text-gray-600 ">Lời tựa </span>
+          <span>{playlistData?.sortDescription}</span>
+        </span>
+        <Lists
+          songs={playlistData?.song?.items}
+          totalDuration={playlistData?.song?.totalDuration}
+        />
+      </div>
     </div>
   );
 };
