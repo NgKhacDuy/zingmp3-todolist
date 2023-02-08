@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import * as apis from "../../apis";
 import moment from "moment";
 import { Lists, ListSong } from "../../components";
+import { Scrollbars } from "react-custom-scrollbars-2";
 const Album = () => {
   const { title, pid } = useParams();
   const [playlistData, setPlaylistData] = useState({});
@@ -16,7 +17,7 @@ const Album = () => {
     fetchDetailPlaylist();
   }, [pid]);
   return (
-    <div className="flex gap-8 w-full px-[59px]">
+    <div className="flex gap-8 w-full h-full px-[59px]">
       <div className="flex-none w-1/4 border border-red-500 flex flex-col items-center gap-2">
         <img
           src={playlistData?.thumbnailM}
@@ -43,16 +44,18 @@ const Album = () => {
           </span>
         </div>
       </div>
-      <div className="flex-auto border border-blue-500 overflow-y-scroll">
-        <span className="text-sm">
-          <span className="text-gray-600 ">Lời tựa </span>
-          <span>{playlistData?.sortDescription}</span>
-        </span>
-        <Lists
-          songs={playlistData?.song?.items}
-          totalDuration={playlistData?.song?.totalDuration}
-        />
-      </div>
+      <Scrollbars style={{ width: "100%", height: "80%" }}>
+        <div className="flex-auto  mb-40">
+          <span className="text-sm">
+            <span className="text-gray-600 ">Lời tựa </span>
+            <span>{playlistData?.sortDescription}</span>
+          </span>
+          <Lists
+            songs={playlistData?.song?.items}
+            totalDuration={playlistData?.song?.totalDuration}
+          />
+        </div>
+      </Scrollbars>
     </div>
   );
 };

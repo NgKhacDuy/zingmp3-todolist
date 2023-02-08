@@ -1,10 +1,19 @@
 import moment from "moment";
 import React, { memo } from "react";
 import icons from "../ultis/icons";
+import { useDispatch } from "react-redux";
+import * as action from "../store/actions";
 const { BsMusicNoteBeamed } = icons;
 const List = ({ songData }) => {
+  const dispatch = useDispatch();
   return (
-    <div className="flex justify-between items-center p-[10px]">
+    <div
+      onClick={() => {
+        dispatch(action.setCurSongId(songData?.encodeId));
+        dispatch(action.play(true));
+      }}
+      className="flex justify-between items-center p-[10px] border-t border-[rgba(0,0,0,0.05)] hover:bg-[#DDE4E4] cursor-pointer"
+    >
       <div className="flex items-center gap-3 flex-1">
         <span>
           {" "}
@@ -21,11 +30,12 @@ const List = ({ songData }) => {
               ? `${songData?.title?.slice(0, 30)}...`
               : songData?.title}
           </span>
-          <span className="">{songData?.artistsNames}</span>
         </span>
       </div>
       <div className="flex-1 flex items-center justify-center">
-        {songData?.album?.title}
+        {songData?.album?.title?.length > 30
+          ? `${songData?.album?.title?.slice(0, 30)}...`
+          : songData?.album?.title}
       </div>
       <div className="flex-1 flex justify-end">
         {moment.utc(songData?.duration * 1000).format("mm:ss")}
